@@ -39,9 +39,6 @@ const heroImage =
 						decoding="async"
 					/>
 				</div>
-				<p class="video-caption" data-i18n="videoCaption">
-					A still frame that sets the pace for the journal.
-				</p>
 			</section>
 
 			<section id="connect" class="section section--light">
@@ -216,7 +213,6 @@ const heroImage =
 					navBook: 'Book',
 					navVideos: 'Videos',
 					navCharity: 'Charity',
-					videoCaption: 'A still frame that sets the pace for the journal.',
 					connectKicker: 'Connect',
 					connectTitle: 'Private notes for thoughtful collaborations.',
 					connectBody:
@@ -276,7 +272,6 @@ const heroImage =
 					navBook: 'Reservar',
 					navVideos: 'Videos',
 					navCharity: 'Caridad',
-					videoCaption: 'Una imagen fija que marca el ritmo del diario.',
 					connectKicker: 'Conectar',
 					connectTitle: 'Notas privadas para colaboraciones con criterio.',
 					connectBody:
@@ -471,14 +466,6 @@ const heroImage =
 				transform-origin: left;
 			}
 
-			.primary-nav a:not(:last-child)::before {
-				content: '|';
-				position: absolute;
-				right: -1.2rem;
-				top: 50%;
-				transform: translateY(-50%);
-				font-weight: 300;
-			}
 
 			.feature-video {
 				display: flex;
@@ -497,7 +484,7 @@ const heroImage =
 				width: 100%;
 				height: min(65vh, 560px);
 				object-fit: cover;
-				object-position: center bottom;
+				object-position: center top;
 				display: block;
 			}
 
