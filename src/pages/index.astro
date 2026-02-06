@@ -2,7 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-const heroVideoId = 'WEDIj9JBTC8';
+const heroImage =
+	'https://media.licdn.com/dms/image/v2/C5622AQHq7riAvg2h_A/feedshare-shrink_1280/feedshare-shrink_1280/0/1669869740140?e=1772064000&v=beta&t=kZOvISbtiMNqDJjKUqr-LrRQAVVyndViGIHgvL7Jfmg';
 ---
 
 <!doctype html>
@@ -28,22 +29,18 @@ const heroVideoId = 'WEDIj9JBTC8';
 				<a href="#charity" data-i18n="navCharity">Charity</a>
 			</nav>
 
-			<section class="feature-video" aria-label="Featured film">
+			<section class="feature-video" aria-label="Featured image">
 				<div class="video-frame">
-					<div class="video-embed">
-						<iframe
-							id="hero-video"
-							class="hero-video"
-							title="Featured video"
-							src={`https://www.youtube.com/embed/${heroVideoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${heroVideoId}&playsinline=1&modestbranding=1&rel=0&enablejsapi=1`}
-							allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-							allowfullscreen
-						></iframe>
-					</div>
-					<button class="audio-toggle" type="button" aria-pressed="false">Audio: Muted</button>
+					<img
+						class="hero-media"
+						src={heroImage}
+						alt="Featured portrait"
+						loading="lazy"
+						decoding="async"
+					/>
 				</div>
 				<p class="video-caption" data-i18n="videoCaption">
-					A quiet, steady reel that sets the pace for the journal.
+					A still frame that sets the pace for the journal.
 				</p>
 			</section>
 
@@ -158,6 +155,53 @@ const heroVideoId = 'WEDIj9JBTC8';
 				</div>
 			</section>
 
+			<section id="contact" class="section section--dark section--reverse">
+				<div class="section-inner">
+					<div class="section-header">
+						<p class="section-kicker" data-i18n="contactKicker">Contact</p>
+						<h2 data-i18n="contactTitle">Contactame con un mensaje directo.</h2>
+					</div>
+					<div class="section-body">
+						<p data-i18n="contactBody">
+							Escribe tu mensaje y lo recibire directamente en mi correo.
+						</p>
+						<form class="contact-form" action="mailto:aure@ar33.us" method="post" enctype="text/plain">
+							<label class="form-label">
+								<span data-i18n="contactNameLabel">Name</span>
+								<input
+									type="text"
+									name="name"
+									required
+									data-i18n-placeholder="contactNamePlaceholder"
+									placeholder="Your name"
+								/>
+							</label>
+							<label class="form-label">
+								<span data-i18n="contactEmailLabel">Email</span>
+								<input
+									type="email"
+									name="email"
+									required
+									data-i18n-placeholder="contactEmailPlaceholder"
+									placeholder="Your email"
+								/>
+							</label>
+							<label class="form-label">
+								<span data-i18n="contactMessageLabel">Message</span>
+								<textarea
+									name="message"
+									rows="5"
+									required
+									data-i18n-placeholder="contactMessagePlaceholder"
+									placeholder="Write your message"
+								></textarea>
+							</label>
+							<button class="form-button" type="submit" data-i18n="contactSubmit">Send message</button>
+						</form>
+					</div>
+				</div>
+			</section>
+
 			<footer class="site-footer" data-i18n="footerText">
 				Copyright 2026 Retired at 33. All rights reserved.
 			</footer>
@@ -172,7 +216,7 @@ const heroVideoId = 'WEDIj9JBTC8';
 					navBook: 'Book',
 					navVideos: 'Videos',
 					navCharity: 'Charity',
-					videoCaption: 'A quiet, steady reel that sets the pace for the journal.',
+					videoCaption: 'A still frame that sets the pace for the journal.',
 					connectKicker: 'Connect',
 					connectTitle: 'Private notes for thoughtful collaborations.',
 					connectBody:
@@ -213,9 +257,17 @@ const heroVideoId = 'WEDIj9JBTC8';
 					charityItem2: 'Tool grants for independent makers.',
 					charityItem3: 'Community-led mentorship programs.',
 					charityLink: 'Partner with the fund',
+					contactKicker: 'Contact',
+					contactTitle: 'Contact me with a direct message.',
+					contactBody: 'Write your message and it will reach me directly by email.',
+					contactNameLabel: 'Name',
+					contactNamePlaceholder: 'Your name',
+					contactEmailLabel: 'Email',
+					contactEmailPlaceholder: 'Your email',
+					contactMessageLabel: 'Message',
+					contactMessagePlaceholder: 'Write your message',
+					contactSubmit: 'Send message',
 					footerText: 'Copyright 2026 Retired at 33. All rights reserved.',
-					audioLow: 'Audio: Low',
-					audioMuted: 'Audio: Muted',
 				},
 				es: {
 					heroTitle: 'RETIRADO A LOS 33',
@@ -224,7 +276,7 @@ const heroVideoId = 'WEDIj9JBTC8';
 					navBook: 'Reservar',
 					navVideos: 'Videos',
 					navCharity: 'Caridad',
-					videoCaption: 'Un reel silencioso y constante que marca el ritmo del diario.',
+					videoCaption: 'Una imagen fija que marca el ritmo del diario.',
 					connectKicker: 'Conectar',
 					connectTitle: 'Notas privadas para colaboraciones con criterio.',
 					connectBody:
@@ -265,26 +317,24 @@ const heroVideoId = 'WEDIj9JBTC8';
 					charityItem2: 'Apoyo en herramientas para makers independientes.',
 					charityItem3: 'Programas de mentoria liderados por la comunidad.',
 					charityLink: 'Colaborar con el fondo',
+					contactKicker: 'Contactame',
+					contactTitle: 'Contactame con un mensaje directo.',
+					contactBody: 'Escribe tu mensaje y lo recibire directamente en mi correo.',
+					contactNameLabel: 'Nombre',
+					contactNamePlaceholder: 'Tu nombre',
+					contactEmailLabel: 'Correo',
+					contactEmailPlaceholder: 'Tu correo',
+					contactMessageLabel: 'Mensaje',
+					contactMessagePlaceholder: 'Escribe tu mensaje',
+					contactSubmit: 'Enviar mensaje',
 					footerText: 'Copyright 2026 Retired at 33. Todos los derechos reservados.',
-					audioLow: 'Audio: Bajo',
-					audioMuted: 'Audio: Silenciado',
 				},
 			};
 
 			const languageButtons = document.querySelectorAll('[data-lang]');
 			const i18nElements = document.querySelectorAll('[data-i18n]');
-			const audioToggle = document.querySelector('.audio-toggle');
+			const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
 			let currentLanguage = localStorage.getItem('language') || 'en';
-			let player;
-			let isPlayerReady = false;
-
-			const updateAudioLabel = () => {
-				if (!audioToggle) return;
-				const dictionary = translations[currentLanguage] ?? translations.en;
-				const isMuted = !player || !isPlayerReady ? true : player.isMuted();
-				audioToggle.textContent = isMuted ? dictionary.audioMuted : dictionary.audioLow;
-				audioToggle.setAttribute('aria-pressed', String(!isMuted));
-			};
 
 			const setLanguage = (lang) => {
 				currentLanguage = translations[lang] ? lang : 'en';
@@ -295,47 +345,22 @@ const heroVideoId = 'WEDIj9JBTC8';
 						element.textContent = dictionary[key];
 					}
 				});
+				placeholderElements.forEach((element) => {
+					const key = element.getAttribute('data-i18n-placeholder');
+					if (key && dictionary[key]) {
+						element.setAttribute('placeholder', dictionary[key]);
+					}
+				});
 				document.documentElement.lang = currentLanguage;
 				languageButtons.forEach((button) => {
 					button.classList.toggle('language-button--active', button.dataset.lang === currentLanguage);
 				});
 				localStorage.setItem('language', currentLanguage);
-				updateAudioLabel();
 			};
 
 			languageButtons.forEach((button) => {
 				button.addEventListener('click', () => setLanguage(button.dataset.lang));
 			});
-
-			window.onYouTubeIframeAPIReady = () => {
-				player = new YT.Player('hero-video', {
-					events: {
-						onReady: (event) => {
-							isPlayerReady = true;
-							event.target.setVolume(20);
-							event.target.unMute();
-							event.target.playVideo();
-							updateAudioLabel();
-							setTimeout(() => updateAudioLabel(), 600);
-						},
-					},
-				});
-			};
-
-			audioToggle?.addEventListener('click', () => {
-				if (!player || !isPlayerReady) return;
-				if (player.isMuted()) {
-					player.unMute();
-					player.setVolume(20);
-				} else {
-					player.mute();
-				}
-				updateAudioLabel();
-			});
-
-			const youtubeScript = document.createElement('script');
-			youtubeScript.src = 'https://www.youtube.com/iframe_api';
-			document.body.appendChild(youtubeScript);
 
 			setLanguage(currentLanguage);
 		</script>
@@ -458,32 +483,11 @@ const heroVideoId = 'WEDIj9JBTC8';
 				background: rgb(var(--black));
 			}
 
-			.video-embed {
-				position: relative;
+			.hero-media {
 				width: 100%;
 				height: min(65vh, 560px);
-			}
-
-			.hero-video {
-				width: 100%;
-				height: 100%;
-				border: 0;
+				object-fit: cover;
 				display: block;
-			}
-
-			.audio-toggle {
-				position: absolute;
-				right: 1.25rem;
-				bottom: 1.25rem;
-				background: rgba(255, 255, 255, 0.85);
-				border: 1px solid rgb(var(--black));
-				color: rgb(var(--black));
-				font-family: inherit;
-				font-size: 0.7rem;
-				text-transform: uppercase;
-				letter-spacing: 0.2em;
-				padding: 0.6rem 1rem;
-				cursor: pointer;
 			}
 
 			.video-caption {
@@ -503,7 +507,7 @@ const heroVideoId = 'WEDIj9JBTC8';
 				width: 100vw;
 				margin-left: calc(50% - 50vw);
 				margin-right: calc(50% - 50vw);
-				padding: 4.5rem 0;
+				padding: 6.5rem 0;
 				border-top: 1px solid var(--section-border);
 				scroll-margin-top: 2.5rem;
 			}
@@ -519,7 +523,7 @@ const heroVideoId = 'WEDIj9JBTC8';
 				margin: 0 auto;
 				display: grid;
 				grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-				gap: 3rem;
+				gap: 3.75rem;
 				align-items: start;
 			}
 
@@ -556,7 +560,7 @@ const heroVideoId = 'WEDIj9JBTC8';
 			.section-body {
 				display: flex;
 				flex-direction: column;
-				gap: 1.5rem;
+				gap: 2rem;
 			}
 
 			.section-body p {
@@ -568,7 +572,7 @@ const heroVideoId = 'WEDIj9JBTC8';
 				padding: 0;
 				margin: 0;
 				display: grid;
-				gap: 1rem;
+				gap: 1.2rem;
 			}
 
 			.section-list li {
@@ -585,6 +589,59 @@ const heroVideoId = 'WEDIj9JBTC8';
 				font-weight: 600;
 				padding-bottom: 0.4rem;
 				border-bottom: 1px solid currentColor;
+			}
+
+			.contact-form {
+				display: grid;
+				gap: 1.5rem;
+			}
+
+			.form-label {
+				display: grid;
+				gap: 0.6rem;
+				font-weight: 500;
+			}
+
+			.form-label span {
+				text-transform: uppercase;
+				letter-spacing: 0.25em;
+				font-size: 0.65rem;
+			}
+
+			.form-label input,
+			.form-label textarea {
+				width: 100%;
+				background: transparent;
+				border: 1px solid currentColor;
+				color: inherit;
+				font-family: inherit;
+				padding: 0.85rem 1rem;
+			}
+
+			.form-label input::placeholder,
+			.form-label textarea::placeholder {
+				color: inherit;
+				opacity: 0.6;
+			}
+
+			.form-button {
+				align-self: flex-start;
+				background: transparent;
+				border: 1px solid currentColor;
+				color: inherit;
+				font-family: inherit;
+				text-transform: uppercase;
+				letter-spacing: 0.25em;
+				font-size: 0.7rem;
+				font-weight: 600;
+				padding: 0.9rem 1.7rem;
+				cursor: pointer;
+			}
+
+			.form-button:hover,
+			.form-button:focus-visible {
+				background: currentColor;
+				color: var(--section-bg);
 			}
 
 			.site-footer {
@@ -615,11 +672,6 @@ const heroVideoId = 'WEDIj9JBTC8';
 				.primary-nav {
 					gap: 1.5rem;
 					letter-spacing: 0.18em;
-				}
-
-				.audio-toggle {
-					right: 0.75rem;
-					bottom: 0.75rem;
 				}
 
 				.language-toggle {
