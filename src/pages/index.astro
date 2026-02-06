@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+const heroVideoId = 'WEDIj9JBTC8';
 ---
 
 <!doctype html>
@@ -11,189 +11,382 @@ const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<div class="language-toggle" role="group" aria-label="Language">
+			<button class="language-button language-button--active" type="button" data-lang="en">English</button>
+			<button class="language-button" type="button" data-lang="es">Espanol</button>
+		</div>
 		<main class="page">
 			<section class="hero" id="top">
-				<p class="hero-kicker">Journal</p>
-				<h1 class="hero-title">retired at 33.</h1>
-				<p class="hero-subtitle">
+				<p class="hero-kicker" data-i18n="heroKicker">Journal</p>
+				<h1 class="hero-title" data-i18n="heroTitle">retired at 33.</h1>
+				<p class="hero-subtitle" data-i18n="heroSubtitle">
 					A monochrome archive of decisions, discipline, and the slow craft of living well.
 				</p>
 			</section>
 
 			<nav class="primary-nav" aria-label="Primary">
-				<a href="#connect">Connect</a>
-				<a href="#call">Call</a>
-				<a href="#book">Book</a>
-				<a href="#videos">Videos</a>
-				<a href="#charity">Charity</a>
+				<a href="#connect" data-i18n="navConnect">Connect</a>
+				<a href="#call" data-i18n="navCall">Call</a>
+				<a href="#book" data-i18n="navBook">Book</a>
+				<a href="#videos" data-i18n="navVideos">Videos</a>
+				<a href="#charity" data-i18n="navCharity">Charity</a>
 			</nav>
 
 			<section class="feature-video" aria-label="Featured film">
 				<div class="video-frame">
-					<video
-						id="hero-video"
-						class="hero-video"
-						autoplay
-						playsinline
-						loop
-						muted
-						preload="metadata"
-					>
-						<source src={heroVideo} type="video/mp4" />
-					</video>
-					<button class="audio-toggle" type="button" aria-pressed="false">Audio: Low</button>
+					<div class="video-embed">
+						<iframe
+							id="hero-video"
+							class="hero-video"
+							title="Featured video"
+							src={`https://www.youtube.com/embed/${heroVideoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${heroVideoId}&playsinline=1&modestbranding=1&rel=0&enablejsapi=1`}
+							allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+							allowfullscreen
+						></iframe>
+					</div>
+					<button class="audio-toggle" type="button" aria-pressed="false">Audio: Muted</button>
 				</div>
-				<p class="video-caption">A quiet, steady reel that sets the pace for the journal.</p>
+				<p class="video-caption" data-i18n="videoCaption">
+					A quiet, steady reel that sets the pace for the journal.
+				</p>
 			</section>
 
-			<section id="connect" class="section">
-				<div class="section-header">
-					<p class="section-kicker">Connect</p>
-					<h2>Private notes for thoughtful collaborations.</h2>
-				</div>
-				<div class="section-body">
-					<p>
-						For brand partnerships, editorial collaborations, or long-term projects, reach out with
-						context and intent. Every inquiry is read with care.
-					</p>
-					<ul class="section-list">
-						<li>Editorial features, interviews, and guest essays.</li>
-						<li>Brand strategy sessions and narrative positioning.</li>
-						<li>Quiet launches and discreet advisory support.</li>
-					</ul>
-					<a class="section-link" href="mailto:hello@retired33.com">Start the conversation</a>
-				</div>
-			</section>
-
-			<section id="call" class="section">
-				<div class="section-header">
-					<p class="section-kicker">Call</p>
-					<h2>Schedule a short, focused call.</h2>
-				</div>
-				<div class="section-body">
-					<p>
-						Select a time for a 20-minute check-in. We keep the agenda tight, the outcomes clear, and
-						the next steps immediate.
-					</p>
-					<ul class="section-list">
-						<li>Availability across CET, EST, and PST.</li>
-						<li>Pre-call notes to keep the conversation sharp.</li>
-						<li>Follow-up summary within 24 hours.</li>
-					</ul>
-					<a class="section-link" href="#book">Reserve a slot</a>
+			<section id="connect" class="section section--light">
+				<div class="section-inner">
+					<div class="section-header">
+						<p class="section-kicker" data-i18n="connectKicker">Connect</p>
+						<h2 data-i18n="connectTitle">Private notes for thoughtful collaborations.</h2>
+					</div>
+					<div class="section-body">
+						<p data-i18n="connectBody">
+							For brand partnerships, editorial collaborations, or long-term projects, reach out with
+							context and intent. Every inquiry is read with care.
+						</p>
+						<ul class="section-list">
+							<li data-i18n="connectItem1">Editorial features, interviews, and guest essays.</li>
+							<li data-i18n="connectItem2">Brand strategy sessions and narrative positioning.</li>
+							<li data-i18n="connectItem3">Quiet launches and discreet advisory support.</li>
+						</ul>
+						<a class="section-link" href="mailto:hello@retired33.com" data-i18n="connectLink">
+							Start the conversation
+						</a>
+					</div>
 				</div>
 			</section>
 
-			<section id="book" class="section">
-				<div class="section-header">
-					<p class="section-kicker">Book</p>
-					<h2>Secure a personal session or advisory day.</h2>
-				</div>
-				<div class="section-body">
-					<p>
-						Booking is curated and limited. Each engagement includes a discovery brief, an action plan,
-						and a tailored summary.
-					</p>
-					<ul class="section-list">
-						<li>1:1 sessions for founders and creatives.</li>
-						<li>Half-day advisory for executive teams.</li>
-						<li>Review of brand, product, and positioning.</li>
-					</ul>
-					<a class="section-link" href="mailto:book@retired33.com">Request availability</a>
-				</div>
-			</section>
-
-			<section id="videos" class="section">
-				<div class="section-header">
-					<p class="section-kicker">Videos</p>
-					<h2>Short films and long-form conversations.</h2>
-				</div>
-				<div class="section-body">
-					<p>
-						A steady stream of clean, monochrome visuals — craft, collection stories, and candid
-						conversations with builders.
-					</p>
-					<ul class="section-list">
-						<li>Studio walkthroughs and quiet desk rituals.</li>
-						<li>Micro-documentaries on enduring design.</li>
-						<li>Weekly video dispatches with written notes.</li>
-					</ul>
-					<a class="section-link" href="#top">View the archive</a>
+			<section id="call" class="section section--dark section--reverse">
+				<div class="section-inner">
+					<div class="section-header">
+						<p class="section-kicker" data-i18n="callKicker">Call</p>
+						<h2 data-i18n="callTitle">Schedule a short, focused call.</h2>
+					</div>
+					<div class="section-body">
+						<p data-i18n="callBody">
+							Select a time for a 20-minute check-in. We keep the agenda tight, the outcomes clear, and
+							the next steps immediate.
+						</p>
+						<ul class="section-list">
+							<li data-i18n="callItem1">Availability across CET, EST, and PST.</li>
+							<li data-i18n="callItem2">Pre-call notes to keep the conversation sharp.</li>
+							<li data-i18n="callItem3">Follow-up summary within 24 hours.</li>
+						</ul>
+						<a class="section-link" href="#book" data-i18n="callLink">Reserve a slot</a>
+					</div>
 				</div>
 			</section>
 
-			<section id="charity" class="section">
-				<div class="section-header">
-					<p class="section-kicker">Charity</p>
-					<h2>Giving quietly, consistently, and with purpose.</h2>
-				</div>
-				<div class="section-body">
-					<p>
-						Each quarter, a portion of project revenue supports education and craft preservation
-						initiatives. Transparency is shared in the annual report.
-					</p>
-					<ul class="section-list">
-						<li>Scholarships for emerging designers.</li>
-						<li>Tool grants for independent makers.</li>
-						<li>Community-led mentorship programs.</li>
-					</ul>
-					<a class="section-link" href="mailto:charity@retired33.com">Partner with the fund</a>
+			<section id="book" class="section section--light">
+				<div class="section-inner">
+					<div class="section-header">
+						<p class="section-kicker" data-i18n="bookKicker">Book</p>
+						<h2 data-i18n="bookTitle">Secure a personal session or advisory day.</h2>
+					</div>
+					<div class="section-body">
+						<p data-i18n="bookBody">
+							Booking is curated and limited. Each engagement includes a discovery brief, an action plan,
+							and a tailored summary.
+						</p>
+						<ul class="section-list">
+							<li data-i18n="bookItem1">1:1 sessions for founders and creatives.</li>
+							<li data-i18n="bookItem2">Half-day advisory for executive teams.</li>
+							<li data-i18n="bookItem3">Review of brand, product, and positioning.</li>
+						</ul>
+						<a class="section-link" href="mailto:book@retired33.com" data-i18n="bookLink">
+							Request availability
+						</a>
+					</div>
 				</div>
 			</section>
 
-			<footer class="site-footer">Copyright 2026 Retired at 33. All rights reserved.</footer>
+			<section id="videos" class="section section--dark section--reverse">
+				<div class="section-inner">
+					<div class="section-header">
+						<p class="section-kicker" data-i18n="videosKicker">Videos</p>
+						<h2 data-i18n="videosTitle">Short films and long-form conversations.</h2>
+					</div>
+					<div class="section-body">
+						<p data-i18n="videosBody">
+							A steady stream of clean, monochrome visuals — craft, collection stories, and candid
+							conversations with builders.
+						</p>
+						<ul class="section-list">
+							<li data-i18n="videosItem1">Studio walkthroughs and quiet desk rituals.</li>
+							<li data-i18n="videosItem2">Micro-documentaries on enduring design.</li>
+							<li data-i18n="videosItem3">Weekly video dispatches with written notes.</li>
+						</ul>
+						<a class="section-link" href="#top" data-i18n="videosLink">View the archive</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="charity" class="section section--light">
+				<div class="section-inner">
+					<div class="section-header">
+						<p class="section-kicker" data-i18n="charityKicker">Charity</p>
+						<h2 data-i18n="charityTitle">Giving quietly, consistently, and with purpose.</h2>
+					</div>
+					<div class="section-body">
+						<p data-i18n="charityBody">
+							Each quarter, a portion of project revenue supports education and craft preservation
+							initiatives. Transparency is shared in the annual report.
+						</p>
+						<ul class="section-list">
+							<li data-i18n="charityItem1">Scholarships for emerging designers.</li>
+							<li data-i18n="charityItem2">Tool grants for independent makers.</li>
+							<li data-i18n="charityItem3">Community-led mentorship programs.</li>
+						</ul>
+						<a class="section-link" href="mailto:charity@retired33.com" data-i18n="charityLink">
+							Partner with the fund
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<footer class="site-footer" data-i18n="footerText">
+				Copyright 2026 Retired at 33. All rights reserved.
+			</footer>
 		</main>
 
 		<script>
-			const heroVideo = document.getElementById('hero-video');
+			const translations = {
+				en: {
+					heroKicker: 'Journal',
+					heroTitle: 'retired at 33.',
+					heroSubtitle: 'A monochrome archive of decisions, discipline, and the slow craft of living well.',
+					navConnect: 'Connect',
+					navCall: 'Call',
+					navBook: 'Book',
+					navVideos: 'Videos',
+					navCharity: 'Charity',
+					videoCaption: 'A quiet, steady reel that sets the pace for the journal.',
+					connectKicker: 'Connect',
+					connectTitle: 'Private notes for thoughtful collaborations.',
+					connectBody:
+						'For brand partnerships, editorial collaborations, or long-term projects, reach out with context and intent. Every inquiry is read with care.',
+					connectItem1: 'Editorial features, interviews, and guest essays.',
+					connectItem2: 'Brand strategy sessions and narrative positioning.',
+					connectItem3: 'Quiet launches and discreet advisory support.',
+					connectLink: 'Start the conversation',
+					callKicker: 'Call',
+					callTitle: 'Schedule a short, focused call.',
+					callBody:
+						'Select a time for a 20-minute check-in. We keep the agenda tight, the outcomes clear, and the next steps immediate.',
+					callItem1: 'Availability across CET, EST, and PST.',
+					callItem2: 'Pre-call notes to keep the conversation sharp.',
+					callItem3: 'Follow-up summary within 24 hours.',
+					callLink: 'Reserve a slot',
+					bookKicker: 'Book',
+					bookTitle: 'Secure a personal session or advisory day.',
+					bookBody:
+						'Booking is curated and limited. Each engagement includes a discovery brief, an action plan, and a tailored summary.',
+					bookItem1: '1:1 sessions for founders and creatives.',
+					bookItem2: 'Half-day advisory for executive teams.',
+					bookItem3: 'Review of brand, product, and positioning.',
+					bookLink: 'Request availability',
+					videosKicker: 'Videos',
+					videosTitle: 'Short films and long-form conversations.',
+					videosBody:
+						'A steady stream of clean, monochrome visuals — craft, collection stories, and candid conversations with builders.',
+					videosItem1: 'Studio walkthroughs and quiet desk rituals.',
+					videosItem2: 'Micro-documentaries on enduring design.',
+					videosItem3: 'Weekly video dispatches with written notes.',
+					videosLink: 'View the archive',
+					charityKicker: 'Charity',
+					charityTitle: 'Giving quietly, consistently, and with purpose.',
+					charityBody:
+						'Each quarter, a portion of project revenue supports education and craft preservation initiatives. Transparency is shared in the annual report.',
+					charityItem1: 'Scholarships for emerging designers.',
+					charityItem2: 'Tool grants for independent makers.',
+					charityItem3: 'Community-led mentorship programs.',
+					charityLink: 'Partner with the fund',
+					footerText: 'Copyright 2026 Retired at 33. All rights reserved.',
+					audioLow: 'Audio: Low',
+					audioMuted: 'Audio: Muted',
+				},
+				es: {
+					heroKicker: 'Diario',
+					heroTitle: 'retirado a los 33.',
+					heroSubtitle: 'Un archivo monocromo de decisiones, disciplina y el lento oficio de vivir bien.',
+					navConnect: 'Conectar',
+					navCall: 'Llamar',
+					navBook: 'Reservar',
+					navVideos: 'Videos',
+					navCharity: 'Caridad',
+					videoCaption: 'Un reel silencioso y constante que marca el ritmo del diario.',
+					connectKicker: 'Conectar',
+					connectTitle: 'Notas privadas para colaboraciones con criterio.',
+					connectBody:
+						'Para alianzas de marca, colaboraciones editoriales o proyectos de largo plazo, escribe con contexto e intencion. Cada consulta se lee con cuidado.',
+					connectItem1: 'Features editoriales, entrevistas y ensayos invitados.',
+					connectItem2: 'Sesiones de estrategia de marca y narrativa.',
+					connectItem3: 'Lanzamientos discretos y asesoria confidencial.',
+					connectLink: 'Iniciar la conversacion',
+					callKicker: 'Llamar',
+					callTitle: 'Agenda una llamada corta y enfocada.',
+					callBody:
+						'Elige un horario para un check-in de 20 minutos. Mantenemos la agenda precisa, los resultados claros y los siguientes pasos inmediatos.',
+					callItem1: 'Disponibilidad en CET, EST y PST.',
+					callItem2: 'Notas previas para una conversacion precisa.',
+					callItem3: 'Resumen de seguimiento en 24 horas.',
+					callLink: 'Reservar un espacio',
+					bookKicker: 'Reservar',
+					bookTitle: 'Asegura una sesion personal o un dia de asesoria.',
+					bookBody:
+						'Las reservas son curadas y limitadas. Cada encuentro incluye un brief de descubrimiento, un plan de accion y un resumen a medida.',
+					bookItem1: 'Sesiones 1:1 para fundadores y creativos.',
+					bookItem2: 'Asesoria de medio dia para equipos ejecutivos.',
+					bookItem3: 'Revision de marca, producto y posicionamiento.',
+					bookLink: 'Solicitar disponibilidad',
+					videosKicker: 'Videos',
+					videosTitle: 'Cortos y conversaciones de largo formato.',
+					videosBody:
+						'Un flujo constante de visuales limpios y monocromos: oficio, historias de coleccion y charlas con constructores.',
+					videosItem1: 'Recorridos de estudio y rituales de escritorio.',
+					videosItem2: 'Micro-documentales sobre diseno duradero.',
+					videosItem3: 'Despachos semanales en video con notas escritas.',
+					videosLink: 'Ver el archivo',
+					charityKicker: 'Caridad',
+					charityTitle: 'Dar en silencio, de forma constante y con proposito.',
+					charityBody:
+						'Cada trimestre, una parte de los ingresos apoya iniciativas de educacion y preservacion del oficio. La transparencia se comparte en el informe anual.',
+					charityItem1: 'Becas para disenadores emergentes.',
+					charityItem2: 'Apoyo en herramientas para makers independientes.',
+					charityItem3: 'Programas de mentoria liderados por la comunidad.',
+					charityLink: 'Colaborar con el fondo',
+					footerText: 'Copyright 2026 Retired at 33. Todos los derechos reservados.',
+					audioLow: 'Audio: Bajo',
+					audioMuted: 'Audio: Silenciado',
+				},
+			};
+
+			const languageButtons = document.querySelectorAll('[data-lang]');
+			const i18nElements = document.querySelectorAll('[data-i18n]');
 			const audioToggle = document.querySelector('.audio-toggle');
+			let currentLanguage = localStorage.getItem('language') || 'en';
+			let player;
+			let isPlayerReady = false;
 
-			if (heroVideo) {
-				const updateAudioLabel = () => {
-					if (!audioToggle) return;
-					audioToggle.setAttribute('aria-pressed', String(!heroVideo.muted));
-					audioToggle.textContent = heroVideo.muted ? 'Audio: Muted' : 'Audio: Low';
-				};
+			const updateAudioLabel = () => {
+				if (!audioToggle) return;
+				const dictionary = translations[currentLanguage] ?? translations.en;
+				const isMuted = !player || !isPlayerReady ? true : player.isMuted();
+				audioToggle.textContent = isMuted ? dictionary.audioMuted : dictionary.audioLow;
+				audioToggle.setAttribute('aria-pressed', String(!isMuted));
+			};
 
-				const attemptAutoplay = async () => {
-					heroVideo.muted = false;
-					heroVideo.volume = 0.2;
-					try {
-						await heroVideo.play();
-					} catch (error) {
-						heroVideo.muted = true;
-						heroVideo.volume = 0.2;
-						updateAudioLabel();
-						heroVideo.play().catch(() => undefined);
-					}
-				};
-
-				attemptAutoplay();
-				updateAudioLabel();
-
-				audioToggle?.addEventListener('click', () => {
-					heroVideo.muted = !heroVideo.muted;
-					if (!heroVideo.muted) {
-						heroVideo.volume = 0.2;
-					}
-					updateAudioLabel();
-					if (heroVideo.paused) {
-						heroVideo.play().catch(() => undefined);
+			const setLanguage = (lang) => {
+				currentLanguage = translations[lang] ? lang : 'en';
+				const dictionary = translations[currentLanguage];
+				i18nElements.forEach((element) => {
+					const key = element.getAttribute('data-i18n');
+					if (key && dictionary[key]) {
+						element.textContent = dictionary[key];
 					}
 				});
-			}
+				document.documentElement.lang = currentLanguage;
+				languageButtons.forEach((button) => {
+					button.classList.toggle('language-button--active', button.dataset.lang === currentLanguage);
+				});
+				localStorage.setItem('language', currentLanguage);
+				updateAudioLabel();
+			};
+
+			languageButtons.forEach((button) => {
+				button.addEventListener('click', () => setLanguage(button.dataset.lang));
+			});
+
+			window.onYouTubeIframeAPIReady = () => {
+				player = new YT.Player('hero-video', {
+					events: {
+						onReady: (event) => {
+							isPlayerReady = true;
+							event.target.setVolume(20);
+							event.target.unMute();
+							event.target.playVideo();
+							updateAudioLabel();
+							setTimeout(() => updateAudioLabel(), 600);
+						},
+					},
+				});
+			};
+
+			audioToggle?.addEventListener('click', () => {
+				if (!player || !isPlayerReady) return;
+				if (player.isMuted()) {
+					player.unMute();
+					player.setVolume(20);
+				} else {
+					player.mute();
+				}
+				updateAudioLabel();
+			});
+
+			const youtubeScript = document.createElement('script');
+			youtubeScript.src = 'https://www.youtube.com/iframe_api';
+			document.body.appendChild(youtubeScript);
+
+			setLanguage(currentLanguage);
 		</script>
 
 		<style>
 			.page {
 				display: flex;
 				flex-direction: column;
-				gap: 3rem;
+				gap: 2.5rem;
+			}
+
+			.language-toggle {
+				position: fixed;
+				top: 1.5rem;
+				left: 1.5rem;
+				display: flex;
+				gap: 0.65rem;
+				padding: 0.35rem;
+				background: rgba(255, 255, 255, 0.9);
+				border: 1px solid rgb(var(--black));
+				z-index: 10;
+			}
+
+			.language-button {
+				background: transparent;
+				border: 1px solid rgb(var(--black));
+				color: rgb(var(--black));
+				font-family: inherit;
+				font-size: 0.6rem;
+				letter-spacing: 0.25em;
+				text-transform: uppercase;
+				padding: 0.45rem 0.8rem;
+				cursor: pointer;
+			}
+
+			.language-button--active {
+				background: rgb(var(--black));
+				color: rgb(var(--white));
 			}
 
 			.hero {
 				text-align: center;
-				margin-top: 1rem;
+				margin-top: 2.5rem;
 				display: flex;
 				flex-direction: column;
 				gap: 1rem;
@@ -273,10 +466,16 @@ const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos
 				background: rgb(var(--black));
 			}
 
-			.hero-video {
+			.video-embed {
+				position: relative;
 				width: 100%;
 				height: min(65vh, 560px);
-				object-fit: cover;
+			}
+
+			.hero-video {
+				width: 100%;
+				height: 100%;
+				border: 0;
 				display: block;
 			}
 
@@ -304,12 +503,53 @@ const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos
 			}
 
 			.section {
+				--section-bg: rgb(var(--white));
+				--section-fg: rgb(var(--black));
+				--section-border: rgba(0, 0, 0, 0.15);
+				background: var(--section-bg);
+				color: var(--section-fg);
+				width: 100vw;
+				margin-left: calc(50% - 50vw);
+				margin-right: calc(50% - 50vw);
+				padding: 4.5rem 0;
+				border-top: 1px solid var(--section-border);
+				scroll-margin-top: 2.5rem;
+			}
+
+			.section--dark {
+				--section-bg: rgb(var(--black));
+				--section-fg: rgb(var(--white));
+				--section-border: rgba(255, 255, 255, 0.2);
+			}
+
+			.section-inner {
+				width: min(1200px, 100% - 3rem);
+				margin: 0 auto;
 				display: grid;
 				grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-				gap: 2.5rem;
-				padding-top: 2.5rem;
-				border-top: 1px solid rgb(var(--black));
-				scroll-margin-top: 2rem;
+				gap: 3rem;
+				align-items: start;
+			}
+
+			.section--reverse .section-header {
+				order: 2;
+				text-align: right;
+			}
+
+			.section--reverse .section-body {
+				order: 1;
+			}
+
+			.section a {
+				color: inherit;
+			}
+
+			.section h2,
+			.section h3,
+			.section h4,
+			.section h5,
+			.section h6 {
+				color: inherit;
 			}
 
 			.section-kicker {
@@ -318,12 +558,13 @@ const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos
 				font-size: 0.7rem;
 				font-weight: 600;
 				margin: 0;
+				opacity: 0.7;
 			}
 
 			.section-body {
 				display: flex;
 				flex-direction: column;
-				gap: 1.2rem;
+				gap: 1.5rem;
 			}
 
 			.section-body p {
@@ -335,12 +576,12 @@ const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos
 				padding: 0;
 				margin: 0;
 				display: grid;
-				gap: 0.9rem;
+				gap: 1rem;
 			}
 
 			.section-list li {
-				padding-top: 0.75rem;
-				border-top: 1px solid rgb(var(--gray-light));
+				padding-top: 0.85rem;
+				border-top: 1px solid var(--section-border);
 				font-weight: 500;
 			}
 
@@ -351,12 +592,11 @@ const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos
 				font-size: 0.72rem;
 				font-weight: 600;
 				padding-bottom: 0.4rem;
-				border-bottom: 1px solid rgb(var(--black));
+				border-bottom: 1px solid currentColor;
 			}
 
 			.site-footer {
-				padding-top: 2.5rem;
-				border-top: 1px solid rgb(var(--black));
+				padding: 3rem 0 1rem;
 				text-align: center;
 				font-size: 0.7rem;
 				letter-spacing: 0.3em;
@@ -365,8 +605,17 @@ const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos
 			}
 
 			@media (max-width: 900px) {
-				.section {
+				.section-inner {
 					grid-template-columns: 1fr;
+				}
+
+				.section--reverse .section-header {
+					order: 1;
+					text-align: left;
+				}
+
+				.section--reverse .section-body {
+					order: 2;
 				}
 			}
 
@@ -379,6 +628,11 @@ const heroVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos
 				.audio-toggle {
 					right: 0.75rem;
 					bottom: 0.75rem;
+				}
+
+				.language-toggle {
+					top: 1rem;
+					left: 1rem;
 				}
 			}
 		</style>
