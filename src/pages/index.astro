@@ -471,6 +471,15 @@ const heroImage =
 				transform-origin: left;
 			}
 
+			.primary-nav a:not(:last-child)::before {
+				content: '|';
+				position: absolute;
+				right: -1.2rem;
+				top: 50%;
+				transform: translateY(-50%);
+				font-weight: 300;
+			}
+
 			.feature-video {
 				display: flex;
 				flex-direction: column;
@@ -488,6 +497,7 @@ const heroImage =
 				width: 100%;
 				height: min(65vh, 560px);
 				object-fit: cover;
+				object-position: center bottom;
 				display: block;
 			}
 
